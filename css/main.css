@@ -14,6 +14,7 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 /*
@@ -94,20 +95,67 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body{
+    background-color: #2A0E22;
+}
+h1{
+    font-size: 3em;
+}
+
+p{
+    font-size: 1.3em;
+}
+
+#container{
+    text-align: center;
+    color: white;
+}
+
+#divContent{
+    padding: 0 15px;
+}
+
+.divContact{
+    margin-top: -30px;
+    position: relative;
+    float: right;
+    width:calc(50vw - 17px);
+}
 
 
 
+@media only screen and (min-width: 840px){
+    #container{
+        padding: 50px;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        text-align: left;
+    }
 
+    #divTitle{
+        position: relative;
+        float: left;
+        width: 350px;
+    }
 
+    #divContent{
+        width: 50%;
+        min-width: 350px;
+        position: relative;
+        float: left;
+        padding-right: 50px;
+        padding-top: 70px;
 
+    }
 
-
-
-
-
-
-
-
+    .divContact{
+        position: relative;
+        float: left;
+        width: 150px;
+        padding-right: 40px;
+    }
+}
 
 
 
