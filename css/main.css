@@ -97,6 +97,9 @@ textarea {
    ========================================================================== */
 body{
     background-color: #2A0E22;
+    color: white;
+    /*-webkit-mask-image: url("/img/grit.png");
+    mask-image: url("/img/grit.png");*/
 }
 h1{
     font-size: 3em;
