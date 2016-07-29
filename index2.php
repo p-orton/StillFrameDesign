@@ -3,7 +3,7 @@
 
 <div id="container">
     <div id="divTitle">
-        <h1>still frame design</h1>
+        <h1>still frame design for</h1>
     </div>
     <div id="divContent">
         <p>web development -- branding -- graphic design</p>

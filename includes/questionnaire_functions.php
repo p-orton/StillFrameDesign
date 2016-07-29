@@ -48,8 +48,7 @@ function saveTextField($mysqli, $user_id, $question_id, $value){
                                 SET answer = ?
                                 WHERE answer.question_id = ?
                                 AND answer.user_id = ?");
-    //$text = $answer = $html = "";
-    //$datatype = 0;
+
     if ($stmt) {
         $stmt->bind_param("sii", $value, $question_id, $user_id);
 
@@ -58,15 +57,11 @@ function saveTextField($mysqli, $user_id, $question_id, $value){
         }else {
             questionnaireError($mysqli->error);
         }
-        //$stmt->store_result();
-        //$stmt->bind_result($text, $datatype, $answer);
-        //$stmt->fetch();
-        //$html = '<p>'. $text . '</p><input type="text" name="' . $question_id . '" value="' . $answer . '"><br/>';
+
         $stmt->close();
     } else {
         questionnaireError($mysqli->error);
     }
-    //return $html;
 }
 
 function getSlider($question_id, $user_id, $mysqli){
@@ -129,16 +124,25 @@ function getPickList($id, $user_id, $mysqli){
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($item, $itemText, $itemSelected);
+
         if($selectMultiple){
-            //Checkboxes
+            //create html for Checkboxes
             while($stmt->fetch()){
-                $html .= '<input type="checkbox" id="' . $item . '" name="' . $list . '" value="false" checked="' . $itemSelected . '">';
+                if($itemSelected){
+                    $html .= '<input type="checkbox" id="' . $item . '" name="' . $list . '" checked>';
+                } else {
+                    $html .= '<input type="checkbox" id="' . $item . '" name="' . $list . '" >';
+                }
                 $html .= '<label for="' . $item . '"><p>' . $itemText . '</p></label>';
             }
         } else {
-            //radio buttons
+            //create html for radio buttons
             while($stmt->fetch()){
-                $html .= '<input type="radio" id="' . $item . '" name="' . $list . '" value="false" checked="' . $itemSelected . '">';
+                if($itemSelected){
+                    $html .= '<input type="radio" id="' . $item . '" name="' . $list . '"  checked>';
+                } else {
+                    $html .= '<input type="radio" id="' . $item . '" name="' . $list . '" >';
+                }
                 $html .= '<label for="' . $item . '"><p>' . $itemText . '</p></label>';
             }
         }
@@ -151,8 +155,58 @@ function getPickList($id, $user_id, $mysqli){
     }
 }
 
-function savePicklist($mysqli, $user_id, $question_id, $item_id, $value){
+function savePicklist($mysqli, $user_id, $question_id, $item_id, $value, $type){
 
+    //If the list a radio type, then set unselected items to false
+    if($type == "radio") {
+        $stmt_uncheck_radios = $mysqli->prepare("UPDATE answer_picklist
+                                              SET item_selected = 0
+                                              WHERE list_id = ?
+                                              AND item_id != ?
+                                              AND user_id = ?");
+
+        if ($stmt_uncheck_radios) {
+            $stmt_uncheck_radios->bind_param("iii", $question_id, $item_id, $user_id);
+
+            if ($stmt_uncheck_radios->execute()) {
+                echo "saved";
+            } else {
+                questionnaireError($mysqli->error);
+            }
+
+            $stmt_uncheck_radios->close();
+        } else {
+            questionnaireError($mysqli->error);
+        }
+    }
+
+
+    $stmt = $mysqli->prepare("UPDATE answer_picklist
+                                SET item_selected = ?
+                                WHERE list_id = ?
+                                AND item_id = ?
+                                AND user_id = ?");
+
+    //Convert value from checked/unchecked to 1/0
+    if($value){
+        $value = 1;
+    } else {
+        $value = 0;
+    }
+
+    if ($stmt) {
+        $stmt->bind_param("iiii", $value, $question_id, $item_id, $user_id);
+
+        if($stmt->execute()){
+            echo "saved";
+        }else {
+            questionnaireError($mysqli->error);
+        }
+
+        $stmt->close();
+    } else {
+        questionnaireError($mysqli->error);
+    }
 }
 
 function questionnaireError($message){

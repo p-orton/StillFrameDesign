@@ -15,14 +15,15 @@ sec_session_start();
 
         $user_id = $_SESSION['user_id'];
         $questions = json_decode($_POST['json'], true);
-        for($i = 0; $i < count($questions); $i++){
-            if(isset($questions[$i]['item_id'])){
-                //save picklist
-            } else {
-                //save standard answer / slider
-                saveTextField($mysqli, $user, $questions['id'], $questions['value']);
-            }
+        //for($i = 0; $i < count($questions); $i++){
+        if(isset($questions['item_id'])){
+            //save picklist
+            savePicklist($mysqli, $user_id, $questions['list_id'], $questions['item_id'], $questions['checked'], $questions['type']);
+        } else {
+            //save standard answer / slider
+            saveTextField($mysqli, $user_id, $questions['id'], $questions['answer']);
         }
+        //}
     }
     ?>
 

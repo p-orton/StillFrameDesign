@@ -1,17 +1,21 @@
 /*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+
 html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
-  font-family: 'Josefin Sans', sans-serif; }
+  font-family: 'Josefin Sans', sans-serif;
+}
 
 /*
  * Remove text-shadow in selection highlight:
@@ -20,200 +24,268 @@ html {
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
+
 ::-moz-selection {
   background: #b3d4fc;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 ::selection {
   background: #b3d4fc;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 /*
  * A better looking default horizontal rule
  */
+
 hr {
   display: block;
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
   margin: 1em 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*
  * Remove the gap between audio, canvas, iframes,
  * images, videos and the bottom of their containers:
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
+
 audio,
 canvas,
 iframe,
 img,
 svg,
 video {
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 /*
  * Remove default fieldset styles.
  */
+
 fieldset {
   border: 0;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*
  * Allow only vertical resizing of textareas.
  */
+
 textarea {
-  resize: vertical; }
+  resize: vertical;
+}
 
 /* ==========================================================================
    Browser Upgrade Prompt
    ========================================================================== */
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
-  padding: 0.2em 0; }
+  padding: 0.2em 0;
+}
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-body, html {
-  color: #2A0E22;
-  height: 100%; }
 
-h1 {
+$dark-purple: #2A0E22;
+$dark-purple-hover: #4d193e;
+$light-font: white;
+
+
+
+body, html{
+  color: $dark-purple;
+  height: 100%;
+}
+
+h1{
   font-size: 2em;
-  margin: 0; }
+  margin: 0;
+}
 
-p {
-  font-size: 1em; }
+p{
+  font-size: 1em;
+}
 
-img {
-  max-width: 100%; }
+img{
+  max-width: 100%;
+}
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"]{
   border: solid white 1px;
   background-color: transparent;
-  color: white; }
+  color: $light-font;
+}
 
-input[type="submit"]:hover, input[type="button"]:hover {
-  background-color: #4d193e; }
+input[type="submit"]:hover, input[type="button"]:hover{
+  background-color: $dark-purple-hover;
+}
 
-.font-dark {
-  color: #2A0E22; }
+.font-dark{
+  color: $dark-purple;
+}
 
-.font-light {
-  color: white; }
+.font-light{
+  color: $light-font;
+}
 
-.float-left {
+.float-left{
   float: left;
-  text-align: left; }
+  text-align: left;
+}
 
-.float-right {
+.float-right{
   float: right;
-  text-align: right; }
+  text-align: right;
+}
 
-.div-logo {
+
+.div-logo{
   position: fixed;
   z-index: 10;
   top: 10px;
-  left: 10px; }
+  left: 10px;
+}
 
-.div-contact {
+.div-contact{
   position: fixed;
   z-index: 10;
   top: 10px;
-  right: 10px; }
+  right: 10px;
+}
 
-.div-scroll {
+.div-scroll{
   position: absolute;
   width: 100%;
   text-align: center;
   bottom: 15px;
-  animation: pulse 1s alternate infinite; }
+  animation: pulse 1s alternate infinite;
+}
 
 @keyframes pulse {
   0% {
-    color: #2A0E22; }
-  100% {
-    color: white; } }
-#container {
-  height: 100%; }
+    color: $dark-purple;
+  }
+  100%{
+    color: white;
+  }
+}
 
-#div-title {
+#container{
+  height: 100%;
+}
+
+#div-title{
   position: absolute;
   top: 50px;
-  left: 10px; }
+  left: 10px;
+}
 
-#div-slogan {
+#div-slogan{
   position: absolute;
   top: 100px;
-  left: 10px; }
+  left: 10px;
+}
 
-.div-feature {
+.div-feature{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+}
 
-.feature-01 {
+
+.feature-01{
   /*background: url("../img/bridge_small.jpg") no-repeat center center;*/
-  margin-bottom: 2px; }
+  margin-bottom: 2px;
+}
 
-.feature-02 {
-  /*background: url("../img/grass_small.jpg") no-repeat center center;*/ }
+.feature-02{
+  /*background: url("../img/grass_small.jpg") no-repeat center center;*/
+}
 
-.div-contact-footer {
+
+.div-contact-footer{
   height: 40px;
-  background-color: #2A0E22;
+  background-color: $dark-purple;
   padding: 40px 0;
-  text-align: center; }
+  text-align: center;
+}
 
-#button-connect {
-  height: 40px;
-  width: 120px; }
+#button-connect{
+  height:40px;
+  width:120px;
+}
+
+
 
 /*********************************************/
 /* Contact Page ******************************/
 /*********************************************/
-.div-contact-container {
+
+.div-contact-container{
   min-height: 100%;
   width: 100%;
-  background-color: #2A0E22;
-  color: white; }
-  .div-contact-container .div-contact-form {
+  background-color: $dark-purple;
+  color: white;
+
+  .div-contact-form{
     width: 200px;
     margin: 0 auto;
-    padding-top: 50px; }
-  .div-contact-container input, .div-contact-container textarea {
+    padding-top: 50px;
+  }
+
+  input, textarea{
     width: 100%;
     height: 30px;
     margin-bottom: 15px;
-    color: black; }
-  .div-contact-container #contact-submit-btn {
-    color: white; }
+    color: black;
+  }
+
+  #contact-submit-btn{
+    color: white;
+  }
+}
+
 
 /*********************************************/
 /* Project Pages *****************************/
 /*********************************************/
-.project-container {
-  width: 100%; }
-  .project-container .project-title {
+
+.project-container{
+  width: 100%;
+
+  .project-title{
     text-align: center;
     width: 200px;
     border: solid black 1px;
     font-weight: bold;
     padding: 10px;
-    margin: 25px auto; }
-  .project-container .project-header {
+    margin: 25px auto;
+  }
+
+  .project-header{
     min-height: 50px;
     width: 220px;
-    margin: 10px auto; }
-  .project-container .project-description {
+    margin: 10px auto;
+  }
+
+  .project-description{
     width: 220px;
     margin: 0 auto 20px auto;
-    text-align: justify; }
+    text-align: justify;
+  }
+}
+
 
 /*
 @media only screen and (min-width: 840px){
@@ -250,19 +322,25 @@ input[type="submit"]:hover, input[type="button"]:hover {
   }
 }
 */
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
 /*
  * Hide visually and from screen readers
  */
+
 .hidden {
-  display: none !important; }
+  display: none !important;
+}
 
 /*
  * Hide only visually, but have it available for screen readers:
  * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
+
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -271,13 +349,15 @@ input[type="submit"]:hover, input[type="button"]:hover {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px; }
+  width: 1px;
+}
 
 /*
  * Extends the .visuallyhidden class to allow the element
  * to be focusable when navigated to via the keyboard:
  * https://www.drupal.org/node/897638
  */
+
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -285,13 +365,16 @@ input[type="submit"]:hover, input[type="button"]:hover {
   margin: 0;
   overflow: visible;
   position: static;
-  width: auto; }
+  width: auto;
+}
 
 /*
  * Hide visually and from screen readers, but maintain layout
  */
+
 .invisible {
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /*
  * Clearfix: contain floats
@@ -304,30 +387,40 @@ input[type="submit"]:hover, input[type="button"]:hover {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
+
 .clearfix:before,
 .clearfix:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */ }
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
 
 .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
+
 @media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */ }
-@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */ }
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
    http://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
+
 @media print {
   *,
   *:before,
@@ -335,57 +428,68 @@ input[type="submit"]:hover, input[type="button"]:hover {
   *:first-letter,
   *:first-line {
     background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster:
-           http://www.sanbeiji.com/archives/953 */
+    color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
     box-shadow: none !important;
-    text-shadow: none !important; }
+    text-shadow: none !important;
+  }
 
   a,
   a:visited {
-    text-decoration: underline; }
+    text-decoration: underline;
+  }
 
   a[href]:after {
-    content: " (" attr(href) ")"; }
+    content: " (" attr(href) ")";
+  }
 
   abbr[title]:after {
-    content: " (" attr(title) ")"; }
+    content: " (" attr(title) ")";
+  }
 
   /*
    * Don't show links that are fragment identifiers,
    * or use the `javascript:` pseudo protocol
    */
+
   a[href^="#"]:after,
   a[href^="javascript:"]:after {
-    content: ""; }
+    content: "";
+  }
 
   pre,
   blockquote {
     border: 1px solid #999;
-    page-break-inside: avoid; }
+    page-break-inside: avoid;
+  }
 
   /*
    * Printing Tables:
    * http://css-discuss.incutio.com/wiki/Printing_Tables
    */
+
   thead {
-    display: table-header-group; }
+    display: table-header-group;
+  }
 
   tr,
   img {
-    page-break-inside: avoid; }
+    page-break-inside: avoid;
+  }
 
   img {
-    max-width: 100% !important; }
+    max-width: 100% !important;
+  }
 
   p,
   h2,
   h3 {
     orphans: 3;
-    widows: 3; }
+    widows: 3;
+  }
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-
-/*# sourceMappingURL=main.css.map */
+    page-break-after: avoid;
+  }
+}

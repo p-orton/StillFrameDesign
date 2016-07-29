@@ -986,6 +986,6 @@ FileETag None
 # </IfModule>
 
 
-DirectoryIndex index2.php
+DirectoryIndex index.php
 
 
