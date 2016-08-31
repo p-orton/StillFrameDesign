@@ -1,0 +1,93 @@
+@mixin breakpoint($class) {
+  @if $class == s {
+    @media only screen and (min-width: 450px) { @content; }
+  }
+
+  @else if $class == m {
+    @media only screen and (min-width: 770px) { @content; }
+  }
+
+  @else if $class == l {
+    @media only screen and (min-width: 1200px) { @content; }
+  }
+
+  @else if $class == x {
+    @media only screen and (min-width: 1600px) { @content; }
+  }
+
+  @else {
+    @warn "Breakpoint mixin supports: s, m, l, x";
+  }
+}
+
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin rotate($deg){
+  @include transform(rotate(#{$deg}deg));
+}
+
+@mixin translate($x, $y){
+  @include transform(translate($x, $y));
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin background-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

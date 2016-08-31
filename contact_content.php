@@ -1,21 +1,9 @@
-<div class="div-contact-container">
-
-    <a href="index.php">
-        <div class="div-logo font-light">
-            home
-        </div>
-    </a>
-
-    <a href="contact.php">
-        <div class="div-contact font-light">
-            contact
-        </div>
-    </a>
-
+<div class="div-contact-container background-dark">
+    <div class="div-contact-header">
+        <h1>Create <br/> with us</h1>
+        <p class="contact-email">stillframedesign@gmail.com</p>
+    </div>
     <div class="div-contact-form">
-        <h1>create with us</h1>
-        <p>stillframedesign@gmail.com</p>
-
         <form role="form" id="contact-form" method="post" action="submit_form.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="inputName">name</label><br/>
@@ -25,15 +13,15 @@
                 <label for="inputEmail">email</label><br/>
                 <input type="email" class="form-control" id="inputEmail" name="email" required>
             </div>
-            <div class="form-group">
+<!--            <div class="form-group">
                 <label for="inputSubject">subject</label><br/>
                 <input type="text" class="form-control" id="inputSubject" name="subject" required>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label for="inputMessage">message</label><br/>
                 <textarea class="form-control" id="inputMessage" rows="1" name="message" required></textarea>
             </div>
-            <input type="submit" id="contact-submit-btn" class="btn btn-default" value="send"></input>
+            <input type="submit" id="contact-submit-btn" class="btn btn-default" value="SEND"></input>
         </form>
     </div>
 </div>

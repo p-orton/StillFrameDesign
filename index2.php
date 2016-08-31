@@ -1,7 +1,7 @@
 
 <?php include 'head.php'; ?>
 
-<div id="container">
+<div id="title-container">
     <div id="divTitle">
         <h1>still frame design for</h1>
     </div>

@@ -1,260 +1,380 @@
-/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+/*** scss variables **************/
 
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
-}
-
-/* ==========================================================================
-   Browser Upgrade Prompt
-   ========================================================================== */
-
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
+/* colors */
 $dark-purple: #2A0E22;
 $dark-purple-hover: #4d193e;
 $light-font: white;
 
+/* z-indexes */
+$zContactForm: 20;
+$zMenuButton: 30;
+$zFront: 100;
+$zTextOverlay: 25;
 
 
-body, html{
-  color: $dark-purple;
+/* breakpoints (temp, use the mixin)*/
+$break-sm: 450px;
+$break-md: 770px;
+$break-lg: 1200px;
+$break-xl: 1600px;
+
+
+/*********************************/
+
+
+
+@import 'default'; /* common defaults */
+@import 'mixin'; /* Import common mixins */
+@import 'helper';
+
+
+
+
+/* hides the fallback logo if JS is enabled */
+.jsEnabled #img-logo-fallback{
+  display: none;
+}
+
+#div-main-container{
+  width:100%;
+  max-width: 2000px;
   height: 100%;
+  margin: 0 auto;
 }
 
-h1{
-  font-size: 2em;
-  margin: 0;
+.img-logo{
+  width: 100%;
 }
-
-p{
-  font-size: 1em;
-}
-
-img{
-  max-width: 100%;
-}
-
-input[type="submit"], input[type="button"]{
-  border: solid white 1px;
-  background-color: transparent;
-  color: $light-font;
-}
-
-input[type="submit"]:hover, input[type="button"]:hover{
-  background-color: $dark-purple-hover;
-}
-
-.font-dark{
-  color: $dark-purple;
-}
-
-.font-light{
-  color: $light-font;
-}
-
-.float-left{
-  float: left;
-  text-align: left;
-}
-
-.float-right{
-  float: right;
-  text-align: right;
-}
-
 
 .div-logo{
   position: fixed;
-  z-index: 10;
-  top: 10px;
-  left: 10px;
+  z-index: $zMenuButton;
+  top: 20px;
+  left: 20px;
+  max-width: 40px;
 }
 
-.div-contact{
-  position: fixed;
-  z-index: 10;
-  top: 10px;
-  right: 10px;
-}
 
-.div-scroll{
+/* ==========================================================================
+   Contact Button
+   ========================================================================== */
+
+.div-contact-button {
+  display: block;
+  height: 60px;
+  width: 60px;
   position: absolute;
+  top: 9px;
+  right: 20px;
+  z-index: $zMenuButton;
+
+  .text{
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    transition: all .7s;
+    font-size: 0.7em;
+  }
+
+  .line{
+    display: block;
+    position: absolute;
+    height: 1.7px;
+    width: 24px;
+    transition: all .7s;
+    bottom: 20px;
+    left: 18px;
+  }
+
+  .line01{
+    transform-origin: 0 0;
+    @include rotate(-60);
+  }
+
+  .line02{
+    transform-origin: 100% 100%;
+    @include rotate(60);
+  }
+
+  .line01-active{
+    margin-left: 4px;
+    @include rotate(-45);
+  }
+
+  .line02-active{
+    margin-left: -4px;
+    @include rotate(45);
+  }
+
+  .line03-active{
+    margin-bottom: 40px;
+    background-color: rgba(255,255,255,0);
+  }
+
+  @include breakpoint(m){
+    position: fixed;
+  }
+}
+
+.div-contact-button:hover{
+  cursor: pointer;
+  letter-spacing: 0.8px;
+}
+
+
+
+/********************************************************************************/
+/* Title Screen *****************************************************************/
+/********************************************************************************/
+
+#title-container, .div-feature{
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  text-align: center;
-  bottom: 15px;
-  animation: pulse 1s alternate infinite;
-}
-
-@keyframes pulse {
-  0% {
-    color: $dark-purple;
-  }
-  100%{
-    color: white;
-  }
-}
-
-#container{
   height: 100%;
 }
 
-#div-title{
+#title-container img{
   position: absolute;
-  top: 50px;
-  left: 10px;
+  bottom: 0;
+  right: 0;
+  min-width: 100%;
+
+  @media only screen and (min-width: 800px) {
+    right: auto;
+    left: 50%;
+    @include translate(-50%, 0);
+  }
+
+  @media only screen and (min-height: 1100px) {
+    bottom: auto;
+    top: 0;
+  }
 }
 
-#div-slogan{
+.div-feature img{
   position: absolute;
-  top: 100px;
-  left: 10px;
+  bottom: 0;
+  left: 50%;
+  @include translate(-50%, 0);
+  min-width: 100%;
+
+  @media only screen and (min-height: 1100px) {
+    bottom: auto;
+    top: 0;
+  }
 }
 
-.div-feature{
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-
-.feature-01{
-  /*background: url("../img/bridge_small.jpg") no-repeat center center;*/
-  margin-bottom: 2px;
-}
-
-.feature-02{
-  /*background: url("../img/grass_small.jpg") no-repeat center center;*/
-}
-
-
-.div-contact-footer{
-  height: 40px;
-  background-color: $dark-purple;
-  padding: 40px 0;
+#div-title-slogan{
+  position: absolute;
+  top: 184px;
+  left: 50%;
+  @include translate(-50%, 0);
   text-align: center;
+  width: 100%;
+  color: white;
+
+  #hr-title{
+    width: 120px;
+    position: relative;
+    margin: 0 auto 12px auto;
+    display: none;
+  }
+
+  #div-title{
+    margin-top: 8px;
+    h1 {
+      font-size: 1.6em;
+    }
+  }
+
+  #div-slogan p{
+    font-size: 0.9em;
+  }
+
+  @include breakpoint(s){
+    #hr-title{
+      display: block;
+    }
+  }
+
+  @include breakpoint(m){
+
+  }
+
+  @include breakpoint(l){
+
+  }
+
+  @include breakpoint(x){
+
+  }
 }
 
-#button-connect{
-  height:40px;
-  width:120px;
+#div-scroll-icon{
+  display: none;
+  border: white solid 2px;
+  border-radius: 50px;
+  width: 20px;
+  height: 36px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  @include translate(-50%, 0);
+  @include animation('bounce 2s linear 0s infinite');
+
+  #div-scroll-inner{
+    background-color: white;
+    width: 2px;
+    height: 9px;
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    @include translate(-50%, 0);
+  }
+
+  @include breakpoint(s){
+    display: block;
+  }
 }
 
+@include keyframes (bounce) {
+  0%, 30%    { @include translate(0, 0);   }
+  50%        { @include translate(0, 5px); }
+  70%, 100%  { @include translate(0, 0);   }
+}
 
 
 /*********************************************/
 /* Contact Page ******************************/
 /*********************************************/
 
-.div-contact-container{
-  min-height: 100%;
+#div-contact-placeholder{
+  display: none;
+  position: relative;
+  float: right;
+/*  right: 0;
+  top: 0;*/
   width: 100%;
+ /* height: 100%;*/
+  z-index: $zContactForm;
   background-color: $dark-purple;
+}
+
+.div-contact-container{
+  width: 230px;
   color: white;
 
-  .div-contact-form{
-    width: 200px;
-    margin: 0 auto;
-    padding-top: 50px;
+  position: relative;
+  margin: 0 auto;
+
+  text-align: center;
+
+  h1{
+    font-size: 3.5em;
+    line-height: 1em;
   }
 
-  input, textarea{
+  p{
+    font-size: 1.2em;
+  }
+
+  .form-group{
+    text-align: left;
+  }
+
+  .div-contact-form, .div-contact-header{
+    width: 230px;
+    margin: 0 auto;
+    float: left;
+  }
+
+  .div-contact-header{
+    padding-top: 150px;
+
+    .contact-email{
+      display: none;
+
+      @include breakpoint(m){
+        display: unset;
+      }
+    }
+  }
+
+  .div-contact-form{
+    padding-top: 20px;
+  }
+
+  input[type="text"], input[type="email"], textarea{
     width: 100%;
     height: 30px;
+    border:none;
     margin-bottom: 15px;
     color: black;
   }
 
+  textarea{
+    margin-bottom: 0;
+  }
+
   #contact-submit-btn{
-    color: white;
+    margin-top: 22px;
+    margin-bottom: 30px;
   }
 }
+
+
+@media only screen and (min-width: $break-md){
+  .div-contact-container {
+    width: 460px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+
+    .div-contact-header{
+      padding: 0;
+    }
+
+    .div-contact-form{
+      padding: 0;
+    }
+
+  }
+}
+
+@media only screen and (min-width: $break-lg){
+  .div-contact-container {
+    width: 900px;
+
+    .div-contact-form, .div-contact-header{
+      width: 450px;
+    }
+
+    h1{
+      font-size: 5.5em;
+      line-height: 1em;
+    }
+
+    p{
+      font-size: 1.4em;
+    }
+
+    input, textarea{
+      height: 40px;
+      margin-bottom: 25px;
+    }
+
+    label{
+      font-size: 1.4em;
+      line-height: 1.7em;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
 
 
 /*********************************************/
@@ -264,232 +384,140 @@ input[type="submit"]:hover, input[type="button"]:hover{
 .project-container{
   width: 100%;
 
-  .project-title{
-    text-align: center;
-    width: 200px;
-    border: solid black 1px;
-    font-weight: bold;
-    padding: 10px;
-    margin: 25px auto;
+  p{
+    font-size: 1em;
+    font-weight: 500;
+    text-align: justify;
+    margin-bottom: 40px;
   }
 
-  .project-header{
-    min-height: 50px;
-    width: 220px;
-    margin: 10px auto;
+  img{
+    width: 100%;
+  }
+
+
+  .project-title{
+    text-align: center;
+    font-size: 1.2em;
+    border: solid black 3.5px;
+    padding: 0 10px;
+    margin: 50px 20px 34px 20px;
+  }
+
+  .project-type{
+    @extend %clearfix;
+    margin: 0 20px;
   }
 
   .project-description{
-    width: 220px;
-    margin: 0 auto 20px auto;
-    text-align: justify;
+    padding: 0 20px;
   }
-}
 
+  .project-overlay-text{
+    padding: 0 20px;
+    color: $dark-purple;
+  }
 
-/*
-@media only screen and (min-width: 840px){
+  .project-overlay-text.font-light{
+    @include breakpoint(s){
+      color: white;
+    }
+  }
 
-  #container{
-    padding: 50px;
-    position: fixed;
-    bottom: 0px;
+  .project-sub-header{
     width: 100%;
-    text-align: left;
-  }
-
-  #divTitle{
     position: relative;
-    float: left;
-    width: 350px;
   }
 
-  #divContent{
-    width: 50%;
-    min-width: 350px;
+  .div-img-stagger{
     position: relative;
-    float: left;
-    padding-right: 50px;
-    padding-top: 70px;
+    height: 265px;
 
-  }
+    img{
+      max-width: 180px;
+      max-height: 740px;
+      position: absolute;
+    }
 
-  .divContact{
-    position: relative;
-    float: left;
-    width: 150px;
-    padding-right: 40px;
-  }
-}
-*/
+    img:nth-child(1){
+      z-index: 1;
+      top: 0;
+      left: 0;
+    }
 
+    img:nth-child(2){
+      z-index: 3;
+      left: 50%;
+      top: 22px;
+      @include translate(-50%, 0);
+    }
 
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden {
-  display: none !important;
-}
-
-/*
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
-
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-/*
- * Extends the .visuallyhidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix:before,
-.clearfix:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-(-webkit-min-device-pixel-ratio: 1.25),
-(min-resolution: 1.25dppx),
-(min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *:before,
-  *:after,
-  *:first-letter,
-  *:first-line {
-    background: transparent !important;
-    color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  /*
-   * Printing Tables:
-   * http://css-discuss.incutio.com/wiki/Printing_Tables
-   */
-
-  thead {
-    display: table-header-group;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  img {
-    max-width: 100% !important;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
+    img:nth-child(3){
+      z-index: 2;
+      top: 0;
+      right: 0;
+    }
   }
 }
+
+@media only screen and (min-width: $break-lg){
+  .project-container{
+
+    .project-title{
+      font-size: 3em;
+      width: 400px;
+      padding: 25px 0;
+      margin: 90px auto 50px auto;
+    }
+
+    .project-description{
+      width: 600px;
+      font-size: 1.2em;
+      margin-bottom: 50px;
+    }
+  }
+
+}
+
+
+
+/******************************
+/* Moving Text Overlay *******/
+/*****************************/
+
+
+
+.overlay-text-fixed{
+  position: fixed;
+  z-index: $zTextOverlay;
+  left: 20px;
+  top: 100px;
+}
+
+
+/*********************************************/
+/* Footer (Connect Button) *******************/
+/*********************************************/
+
+.div-contact-footer{
+  background-color: $dark-purple;
+  text-align: center;
+
+  input{
+    margin: 30px 0;
+  }
+}
+
+#button-connect{
+  /*  height: 50px;
+    width: 200px;
+    border: solid white 3px;
+    font-size: 1.4em;
+    font-weight: 900;*/
+}
+
+/*#button-connect:hover{
+  border-color: $dark-purple;
+  color: $dark-purple;
+  background-color: white;
+}*/
