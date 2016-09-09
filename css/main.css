@@ -121,7 +121,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
   background-color: white; }
 
 /* common defaults */
-.project-container .project-type:after {
+#div-about-container:after, .project-container .project-type:after {
   content: "";
   display: table;
   clear: both; }
@@ -303,8 +303,8 @@ img{
 .margin-bottom-40 {
   margin-bottom: 40px; }
 
-/* hides the fallback logo if JS is enabled */
-.jsEnabled #img-logo-fallback {
+/* hidden if JS is enabled */
+.jsEnabled .hide-on-load {
   display: none; }
 
 #div-main-container {
@@ -317,52 +317,77 @@ img{
   width: 100%; }
 
 .div-logo {
+  /*border: solid white 1px;*/
   position: fixed;
   z-index: 30;
   top: 20px;
   left: 20px;
-  max-width: 40px; }
+  height: 40px;
+  width: 40px; }
+  @media only screen and (min-width: 450px) {
+    .div-logo {
+      top: 40px;
+      left: 40px; } }
 
 /* ==========================================================================
    Contact Button
    ========================================================================== */
 .div-contact-button {
+  /*border: white solid 1px;*/
   display: block;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
+  max-height: 40px;
+  max-width: 40px;
   position: absolute;
-  top: 9px;
+  top: 20px;
   right: 20px;
   z-index: 30; }
+  .div-contact-button .img-triangle {
+    width: 28px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0); }
   .div-contact-button .text {
     text-align: center;
     width: 100%;
     position: absolute;
-    bottom: 0px;
-    transition: all .7s;
+    bottom: -5px;
+    /*transition: all .7s;*/
     font-size: 0.7em; }
   .div-contact-button .line {
     display: block;
     position: absolute;
-    height: 1.7px;
-    width: 24px;
-    transition: all .7s;
-    bottom: 20px;
-    left: 18px; }
+    height: 2px;
+    width: 27px;
+    transition: all 1s ease; }
   .div-contact-button .line01 {
+    bottom: 13px;
+    left: 6px;
     transform-origin: 0 0;
-    -moz-transform: rotate(-60deg);
-    -o-transform: rotate(-60deg);
-    -ms-transform: rotate(-60deg);
-    -webkit-transform: rotate(-60deg);
-    transform: rotate(-60deg); }
+    -moz-transform: rotate(-61deg);
+    -o-transform: rotate(-61deg);
+    -ms-transform: rotate(-61deg);
+    -webkit-transform: rotate(-61deg);
+    transform: rotate(-61deg); }
   .div-contact-button .line02 {
+    bottom: 14px;
+    left: 5px;
     transform-origin: 100% 100%;
-    -moz-transform: rotate(60deg);
-    -o-transform: rotate(60deg);
-    -ms-transform: rotate(60deg);
-    -webkit-transform: rotate(60deg);
-    transform: rotate(60deg); }
+    -moz-transform: rotate(61deg);
+    -o-transform: rotate(61deg);
+    -ms-transform: rotate(61deg);
+    -webkit-transform: rotate(61deg);
+    transform: rotate(61deg); }
+  .div-contact-button .line03 {
+    bottom: 14px;
+    left: 7px;
+    width: 26px; }
   .div-contact-button .line01-active {
     margin-left: 4px;
     -moz-transform: rotate(-45deg);
@@ -371,7 +396,8 @@ img{
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg); }
   .div-contact-button .line02-active {
-    margin-left: -4px;
+    top: 24.5px;
+    left: 2px;
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -380,6 +406,10 @@ img{
   .div-contact-button .line03-active {
     margin-bottom: 40px;
     background-color: rgba(255, 255, 255, 0); }
+  @media only screen and (min-width: 450px) {
+    .div-contact-button {
+      top: 40px;
+      right: 40px; } }
   @media only screen and (min-width: 770px) {
     .div-contact-button {
       position: fixed; } }
@@ -391,11 +421,27 @@ img{
 /********************************************************************************/
 /* Title Screen *****************************************************************/
 /********************************************************************************/
+#index-container {
+  min-height: 100%;
+  background-color: #2A0E22; }
+
 #title-container, .div-feature {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%; }
+
+.div-feature {
+  max-height: 675px; }
+  @media only screen and (min-width: 450px) {
+    .div-feature {
+      max-height: 1100px; } }
+  @media only screen and (min-width: 770px) {
+    .div-feature {
+      max-height: 900px; } }
+  @media only screen and (min-width: 1600px) {
+    .div-feature {
+      max-height: 1100px; } }
 
 #title-container img {
   position: absolute;
@@ -420,17 +466,27 @@ img{
   position: absolute;
   bottom: 0;
   left: 50%;
-  -moz-transform: translate(-50%, 0);
-  -o-transform: translate(-50%, 0);
-  -ms-transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   min-width: 100%; }
   @media only screen and (min-height: 1100px) {
     .div-feature img {
       bottom: auto;
       top: 0; } }
 
+.slogan-without-break {
+  display: none; }
+
+@media only screen and (min-width: 450px) {
+  .slogan-without-break {
+    display: block; }
+
+  .slogan-with-break {
+    display: none; } }
 #div-title-slogan {
   position: absolute;
   top: 184px;
@@ -453,10 +509,40 @@ img{
     #div-title-slogan #div-title h1 {
       font-size: 1.6em; }
   #div-title-slogan #div-slogan p {
-    font-size: 0.9em; }
+    font-size: 0.9em;
+    font-style: italic; }
   @media only screen and (min-width: 450px) {
-    #div-title-slogan #hr-title {
-      display: block; } }
+    #div-title-slogan {
+      top: 310px; }
+      #div-title-slogan #hr-title {
+        display: block;
+        width: 200px; }
+      #div-title-slogan #div-title {
+        margin-top: 8px; }
+        #div-title-slogan #div-title h1 {
+          font-size: 3em; }
+      #div-title-slogan #div-slogan p {
+        font-size: 1.15em;
+        margin-top: -10px; } }
+  @media only screen and (min-width: 770px) {
+    #div-title-slogan {
+      top: 250px; }
+      #div-title-slogan #hr-title {
+        display: block;
+        width: 200px; }
+      #div-title-slogan #div-title {
+        margin-top: 8px; }
+        #div-title-slogan #div-title h1 {
+          font-size: 2.8em; }
+      #div-title-slogan #div-slogan p {
+        font-size: 1.08em;
+        margin-top: -10px; } }
+  @media only screen and (min-width: 1200px) {
+    #div-title-slogan {
+      bottom: 375px;
+      top: unset; }
+      #div-title-slogan #div-title {
+        margin-top: -4px; } }
 
 #div-scroll-icon {
   display: none;
@@ -589,16 +675,40 @@ img{
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0); } }
 /*********************************************/
+/* About Section *****************************/
+/*********************************************/
+#div-about-container {
+  width: 100%;
+  background-color: white;
+  margin: 0 auto; }
+  #div-about-container #div-about, #div-about-container #bio-container {
+    text-align: center;
+    max-width: 620px;
+    padding: 20px;
+    margin: 0 auto; }
+  #div-about-container #bio-container .about-bio {
+    width: 50%;
+    text-align: center;
+    min-width: 250px;
+    margin: 0 auto; }
+    @media only screen and (min-width: 600px) {
+      #div-about-container #bio-container .about-bio {
+        float: left; } }
+    #div-about-container #bio-container .about-bio input[type="button"] {
+      color: #2A0E22;
+      border: solid #2A0E22 1px; }
+    #div-about-container #bio-container .about-bio input[type="button"]:hover {
+      background-color: #2A0E22;
+      color: white; }
+
+/*********************************************/
 /* Contact Page ******************************/
 /*********************************************/
 #div-contact-placeholder {
   display: none;
   position: relative;
   float: right;
-  /*  right: 0;
-    top: 0;*/
   width: 100%;
-  /* height: 100%;*/
   z-index: 20;
   background-color: #2A0E22; }
 
@@ -610,20 +720,21 @@ img{
   text-align: center; }
   .div-contact-container h1 {
     font-size: 3.5em;
-    line-height: 1em; }
+    line-height: 1em;
+    text-align: left; }
   .div-contact-container p {
     font-size: 1.2em; }
   .div-contact-container .form-group {
     text-align: left; }
   .div-contact-container .div-contact-form, .div-contact-container .div-contact-header {
-    width: 230px;
+    width: 100%;
     margin: 0 auto;
     float: left; }
   .div-contact-container .div-contact-header {
     padding-top: 150px; }
     .div-contact-container .div-contact-header .contact-email {
       display: none; }
-      @media only screen and (min-width: 770px) {
+      @media only screen and (min-width: 450px) {
         .div-contact-container .div-contact-header .contact-email {
           display: unset; } }
   .div-contact-container .div-contact-form {
@@ -639,44 +750,38 @@ img{
   .div-contact-container #contact-submit-btn {
     margin-top: 22px;
     margin-bottom: 30px; }
-
-@media only screen and (min-width: 770px) {
-  .div-contact-container {
-    width: 460px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
-    .div-contact-container .div-contact-header {
-      padding: 0; }
+  @media only screen and (min-width: 450px) {
+    .div-contact-container {
+      width: 345px;
+      margin: 75px auto 0 auto; }
+      .div-contact-container .div-contact-header {
+        text-align: left;
+        padding-top: 80px; }
+      .div-contact-container .contact-email {
+        line-height: 1em; }
+      .div-contact-container #contact-header-one-line, .div-contact-container #contact-header-two-lines {
+        margin-bottom: 10px; }
+      .div-contact-container textarea {
+        min-height: 200px; } }
+  @media only screen and (min-width: 770px) {
     .div-contact-container .div-contact-form {
-      padding: 0; } }
-@media only screen and (min-width: 1200px) {
-  .div-contact-container {
-    width: 900px; }
-    .div-contact-container .div-contact-form, .div-contact-container .div-contact-header {
-      width: 450px; }
-    .div-contact-container h1 {
-      font-size: 5.5em;
-      line-height: 1em; }
-    .div-contact-container p {
-      font-size: 1.4em; }
-    .div-contact-container input, .div-contact-container textarea {
-      height: 40px;
-      margin-bottom: 25px; }
-    .div-contact-container label {
-      font-size: 1.4em;
-      line-height: 1.7em;
-      margin-bottom: 10px; } }
+      padding-top: 25px; } }
+
+#contact-header-one-line {
+  display: none; }
+
+@media only screen and (min-width: 450px) {
+  #contact-header-one-line {
+    display: block; }
+
+  #contact-header-two-lines {
+    display: none; } }
 /*********************************************/
 /* Project Pages *****************************/
 /*********************************************/
 .project-container {
-  width: 100%; }
+  width: 100%;
+  min-height: 100%; }
   .project-container p {
     font-size: 1em;
     font-weight: 500;
@@ -697,9 +802,6 @@ img{
   .project-container .project-overlay-text {
     padding: 0 20px;
     color: #2A0E22; }
-  @media only screen and (min-width: 450px) {
-    .project-container .project-overlay-text.font-light {
-      color: white; } }
   .project-container .project-sub-header {
     width: 100%;
     position: relative; }
@@ -727,25 +829,81 @@ img{
       z-index: 2;
       top: 0;
       right: 0; }
+  @media only screen and (min-width: 400px) {
+    .project-container .div-img-stagger {
+      height: 315px; }
+      .project-container .div-img-stagger img {
+        max-width: 220px; } }
+  @media only screen and (min-width: 520px) {
+    .project-container .div-img-stagger {
+      height: 390px; }
+      .project-container .div-img-stagger img {
+        max-width: 280px; } }
+  @media only screen and (min-width: 660px) {
+    .project-container .project-description, .project-container .project-overlay-text, .project-container .project-title, .project-container .project-type {
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto; }
+    .project-container .project-title {
+      margin: 50px auto 34px auto; }
+    .project-container .div-img-stagger {
+      height: 475px; }
+      .project-container .div-img-stagger img {
+        max-width: 350px; } }
+  @media only screen and (min-width: 800px) {
+    .project-container .div-img-stagger {
+      height: 560px; }
+      .project-container .div-img-stagger img {
+        max-width: 430px; } }
+  @media only screen and (min-width: 980px) {
+    .project-container .div-img-stagger {
+      height: 700px; }
+      .project-container .div-img-stagger img {
+        max-width: 545px; } }
+  @media only screen and (min-width: 1200px) {
+    .project-container .div-img-stagger {
+      max-width: 1060px;
+      margin-left: auto;
+      margin-right: auto; }
+      .project-container .div-img-stagger img:nth-child(1) {
+        top: 0;
+        left: 0; }
+      .project-container .div-img-stagger img:nth-child(2) {
+        left: 50%;
+        top: 22px;
+        -moz-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0); }
+      .project-container .div-img-stagger img:nth-child(3) {
+        top: 0;
+        right: 0; } }
 
-@media only screen and (min-width: 1200px) {
-  .project-container .project-title {
-    font-size: 3em;
-    width: 400px;
-    padding: 25px 0;
-    margin: 90px auto 50px auto; }
-  .project-container .project-description {
-    width: 600px;
-    font-size: 1.2em;
-    margin-bottom: 50px; } }
-/******************************
-/* Moving Text Overlay *******/
-/*****************************/
+/*****************************************/
+/* Moving Text Overlay (home page) *******/
+/*****************************************/
+.overlay-text {
+  color: #2A0E22; }
+  @media only screen and (min-width: 1100px) {
+    .overlay-text {
+      color: white; } }
+  @media only screen and (min-width: 450px) {
+    .overlay-text {
+      font-size: 1.1em; } }
+  @media only screen and (min-width: 770px) {
+    .overlay-text {
+      font-size: 1em; } }
+
 .overlay-text-fixed {
   position: fixed;
   z-index: 25;
   left: 20px;
   top: 100px; }
+  @media only screen and (min-width: 450px) {
+    .overlay-text-fixed {
+      top: 125px;
+      left: 40px; } }
 
 /*********************************************/
 /* Footer (Connect Button) *******************/
@@ -753,20 +911,49 @@ img{
 .div-contact-footer {
   background-color: #2A0E22;
   text-align: center; }
+  .div-contact-footer a {
+    text-decoration: none; }
   .div-contact-footer input {
     margin: 30px 0; }
 
-#button-connect {
-  /*  height: 50px;
-    width: 200px;
-    border: solid white 3px;
-    font-size: 1.4em;
-    font-weight: 900;*/ }
+/*********************************************/
+/* Loading Spinner ***************************/
+/*********************************************/
+.loader-container-light, .loader-container-dark {
+  position: relative;
+  width: 100%;
+  height: 300px; }
+  .loader-container-light span, .loader-container-dark span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: solid 1px #2A0E22;
+    opacity: 0; }
+  .loader-container-light span:nth-child(1), .loader-container-dark span:nth-child(1) {
+    animation: grow 2s infinite; }
+  .loader-container-light span:nth-child(2), .loader-container-dark span:nth-child(2) {
+    animation: grow 2s infinite;
+    animation-delay: 1s; }
 
-/*#button-connect:hover{
-  border-color: $dark-purple;
-  color: $dark-purple;
-  background-color: white;
-}*/
+.loader-container-light span {
+  border: solid 1px white; }
+
+@keyframes grow {
+  from {
+    width: 2px;
+    height: 2px;
+    opacity: 1; }
+  to {
+    width: 50px;
+    height: 50px;
+    opacity: 0; } }
 
 /*# sourceMappingURL=main.css.map */

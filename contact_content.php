@@ -1,7 +1,8 @@
 <div class="div-contact-container background-dark">
     <div class="div-contact-header">
-        <h1>Create <br/> with us</h1>
-        <p class="contact-email">stillframedesign@gmail.com</p>
+        <h1 id="contact-header-two-lines">Create <br/> with us!</h1>
+        <h1 id="contact-header-one-line">Create with us!</h1>
+        <p class="contact-email">stillframedesign@gmail.com <br/> 403.477.6334 </p>
     </div>
     <div class="div-contact-form">
         <form role="form" id="contact-form" method="post" action="submit_form.php" enctype="multipart/form-data">

@@ -30,8 +30,8 @@ $break-xl: 1600px;
 
 
 
-/* hides the fallback logo if JS is enabled */
-.jsEnabled #img-logo-fallback{
+/* hidden if JS is enabled */
+.jsEnabled .hide-on-load{
   display: none;
 }
 
@@ -47,11 +47,18 @@ $break-xl: 1600px;
 }
 
 .div-logo{
+  /*border: solid white 1px;*/
   position: fixed;
   z-index: $zMenuButton;
   top: 20px;
   left: 20px;
-  max-width: 40px;
+  height: 40px;
+  width: 40px;
+
+  @include breakpoint(s){
+    top: 40px;
+    left: 40px;
+  }
 }
 
 
@@ -60,41 +67,61 @@ $break-xl: 1600px;
    ========================================================================== */
 
 .div-contact-button {
+  /*border: white solid 1px;*/
   display: block;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
+  max-height: 40px;
+  max-width: 40px;
   position: absolute;
-  top: 9px;
+  top: 20px;
   right: 20px;
   z-index: $zMenuButton;
+
+  .img-triangle{
+    width: 28px;
+
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    @include translate(-50%, 0);
+  }
 
   .text{
     text-align: center;
     width: 100%;
     position: absolute;
-    bottom: 0px;
-    transition: all .7s;
+    bottom: -5px;
+    /*transition: all .7s;*/
     font-size: 0.7em;
   }
 
   .line{
     display: block;
     position: absolute;
-    height: 1.7px;
-    width: 24px;
-    transition: all .7s;
-    bottom: 20px;
-    left: 18px;
+    height: 2px;
+    width: 27px;
+    transition: all 1s ease;
   }
 
   .line01{
+    bottom: 13px;
+    left: 6px;
     transform-origin: 0 0;
-    @include rotate(-60);
+    @include rotate(-61);
   }
 
   .line02{
+    bottom: 14px;
+    left: 5px;
     transform-origin: 100% 100%;
-    @include rotate(60);
+    @include rotate(61);
+  }
+
+  .line03{
+    bottom: 14px;
+    left: 7px;
+    width: 26px;
   }
 
   .line01-active{
@@ -103,13 +130,20 @@ $break-xl: 1600px;
   }
 
   .line02-active{
-    margin-left: -4px;
+    top: 24.5px;
+    left: 2px;
     @include rotate(45);
   }
 
   .line03-active{
     margin-bottom: 40px;
     background-color: rgba(255,255,255,0);
+  }
+
+  @include breakpoint(s){
+    top: 40px;
+    right: 40px;
+
   }
 
   @include breakpoint(m){
@@ -128,11 +162,23 @@ $break-xl: 1600px;
 /* Title Screen *****************************************************************/
 /********************************************************************************/
 
+#index-container{
+  min-height: 100%;
+  background-color: $dark-purple;
+}
+
 #title-container, .div-feature{
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
+}
+
+.div-feature{
+  max-height: 675px;
+  @include breakpoint(s){max-height: 1100px;}
+  @include breakpoint(m){max-height: 900px;}
+  @include breakpoint(x){max-height: 1100px;}
 }
 
 #title-container img{
@@ -157,7 +203,8 @@ $break-xl: 1600px;
   position: absolute;
   bottom: 0;
   left: 50%;
-  @include translate(-50%, 0);
+  top: 50%;
+  @include translate(-50%, -50%);
   min-width: 100%;
 
   @media only screen and (min-height: 1100px) {
@@ -165,6 +212,22 @@ $break-xl: 1600px;
     top: 0;
   }
 }
+
+.slogan-without-break{
+  display: none;
+}
+
+@include breakpoint(s){
+  .slogan-without-break{
+    display: block;
+  }
+
+  .slogan-with-break{
+    display: none;
+  }
+}
+
+
 
 #div-title-slogan{
   position: absolute;
@@ -191,21 +254,60 @@ $break-xl: 1600px;
 
   #div-slogan p{
     font-size: 0.9em;
+    font-style: italic;
   }
 
   @include breakpoint(s){
+    top: 310px;
+
     #hr-title{
       display: block;
+      width: 200px;
+    }
+
+    #div-title{
+      margin-top: 8px;
+      h1 {
+        font-size: 3em;
+      }
+    }
+
+    #div-slogan p{
+      font-size: 1.15em;
+      margin-top: -10px;
     }
   }
 
   @include breakpoint(m){
+    top: 250px;
 
+    #hr-title{
+      display: block;
+      width: 200px;
+    }
+
+    #div-title{
+      margin-top: 8px;
+      h1 {
+        font-size: 2.8em;
+      }
+    }
+
+    #div-slogan p{
+      font-size: 1.08em;
+      margin-top: -10px;
+    }
   }
 
   @include breakpoint(l){
-
+    bottom: 375px;
+    top: unset;
+    #div-title{
+      margin-top: -4px;
+    }
   }
+
+
 
   @include breakpoint(x){
 
@@ -245,6 +347,44 @@ $break-xl: 1600px;
   70%, 100%  { @include translate(0, 0);   }
 }
 
+/*********************************************/
+/* About Section *****************************/
+/*********************************************/
+
+#div-about-container{
+  width: 100%;
+  background-color: white;
+  margin: 0 auto;
+  @extend %clearfix;
+
+  #div-about, #bio-container{
+    text-align: center;
+    max-width: 620px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  #bio-container .about-bio {
+    width: 50%;
+    text-align: center;
+    min-width: 250px;
+    margin: 0 auto;
+    @media only screen and (min-width: 600px) {
+      float: left;
+    }
+
+    input[type="button"]{
+      color: $dark-purple;
+      border: solid $dark-purple 1px;
+    }
+    input[type="button"]:hover{
+      background-color: $dark-purple;
+      color: white;
+    }
+
+  }
+}
+
 
 /*********************************************/
 /* Contact Page ******************************/
@@ -254,10 +394,7 @@ $break-xl: 1600px;
   display: none;
   position: relative;
   float: right;
-/*  right: 0;
-  top: 0;*/
   width: 100%;
- /* height: 100%;*/
   z-index: $zContactForm;
   background-color: $dark-purple;
 }
@@ -265,15 +402,14 @@ $break-xl: 1600px;
 .div-contact-container{
   width: 230px;
   color: white;
-
   position: relative;
   margin: 0 auto;
-
   text-align: center;
 
   h1{
     font-size: 3.5em;
     line-height: 1em;
+    text-align: left;
   }
 
   p{
@@ -285,7 +421,7 @@ $break-xl: 1600px;
   }
 
   .div-contact-form, .div-contact-header{
-    width: 230px;
+    width: 100%;
     margin: 0 auto;
     float: left;
   }
@@ -296,7 +432,7 @@ $break-xl: 1600px;
     .contact-email{
       display: none;
 
-      @include breakpoint(m){
+      @include breakpoint(s){
         display: unset;
       }
     }
@@ -322,81 +458,75 @@ $break-xl: 1600px;
     margin-top: 22px;
     margin-bottom: 30px;
   }
-}
 
-
-@media only screen and (min-width: $break-md){
-  .div-contact-container {
-    width: 460px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include translate(-50%, -50%);
+  @include breakpoint(s){
+    width: 345px;
+    margin: 75px auto 0 auto;
 
     .div-contact-header{
-      padding: 0;
+      text-align: left;
+      padding-top: 80px;
     }
 
-    .div-contact-form{
-      padding: 0;
-    }
-
-  }
-}
-
-@media only screen and (min-width: $break-lg){
-  .div-contact-container {
-    width: 900px;
-
-    .div-contact-form, .div-contact-header{
-      width: 450px;
-    }
-
-    h1{
-      font-size: 5.5em;
+    .contact-email{
       line-height: 1em;
     }
 
-    p{
-      font-size: 1.4em;
-    }
-
-    input, textarea{
-      height: 40px;
-      margin-bottom: 25px;
-    }
-
-    label{
-      font-size: 1.4em;
-      line-height: 1.7em;
+    #contact-header-one-line, #contact-header-two-lines{
       margin-bottom: 10px;
+    }
+
+    textarea{
+      min-height: 200px;
+    }
+  }
+
+  @include breakpoint(m){
+    .div-contact-form{
+      padding-top: 25px;
     }
   }
 }
 
 
+
+#contact-header-one-line{
+  display: none;
+}
+
+@include breakpoint(s){
+  #contact-header-one-line{
+    display: block;
+  }
+
+  #contact-header-two-lines{
+    display: none;
+  }
+}
 
 
 /*********************************************/
 /* Project Pages *****************************/
 /*********************************************/
 
-.project-container{
-  width: 100%;
 
-  p{
+
+.project-container {
+  width: 100%;
+  min-height: 100%;
+
+  p {
     font-size: 1em;
     font-weight: 500;
     text-align: justify;
     margin-bottom: 40px;
   }
 
-  img{
+  img {
     width: 100%;
   }
 
-
-  .project-title{
+  .project-title {
     text-align: center;
     font-size: 1.2em;
     border: solid black 3.5px;
@@ -404,87 +534,153 @@ $break-xl: 1600px;
     margin: 50px 20px 34px 20px;
   }
 
-  .project-type{
+  .project-type {
     @extend %clearfix;
     margin: 0 20px;
   }
 
-  .project-description{
+  .project-description {
     padding: 0 20px;
   }
 
-  .project-overlay-text{
+  .project-overlay-text {
     padding: 0 20px;
     color: $dark-purple;
   }
 
-  .project-overlay-text.font-light{
-    @include breakpoint(s){
-      color: white;
-    }
-  }
-
-  .project-sub-header{
+  .project-sub-header {
     width: 100%;
     position: relative;
   }
 
-  .div-img-stagger{
+  .div-img-stagger {
     position: relative;
     height: 265px;
 
-    img{
+    img {
       max-width: 180px;
       max-height: 740px;
       position: absolute;
     }
 
-    img:nth-child(1){
+    img:nth-child(1) {
       z-index: 1;
       top: 0;
       left: 0;
     }
 
-    img:nth-child(2){
+    img:nth-child(2) {
       z-index: 3;
       left: 50%;
       top: 22px;
       @include translate(-50%, 0);
     }
 
-    img:nth-child(3){
+    img:nth-child(3) {
       z-index: 2;
       top: 0;
       right: 0;
     }
   }
-}
 
-@media only screen and (min-width: $break-lg){
-  .project-container{
-
-    .project-title{
-      font-size: 3em;
-      width: 400px;
-      padding: 25px 0;
-      margin: 90px auto 50px auto;
-    }
-
-    .project-description{
-      width: 600px;
-      font-size: 1.2em;
-      margin-bottom: 50px;
+  @media only screen and (min-width: 400px) {
+    .div-img-stagger {
+      height: 315px;
+      img {
+        max-width: 220px;
+      }
     }
   }
 
+  @media only screen and (min-width: 520px) {
+    .div-img-stagger {
+      height: 390px;
+      img {
+        max-width: 280px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 660px) {
+    .project-description, .project-overlay-text, .project-title, .project-type {
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .project-title {
+      margin: 50px auto 34px auto;
+    }
+    .div-img-stagger {
+      height: 475px;
+      img {
+        max-width: 350px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    .div-img-stagger {
+      height: 560px;
+      img {
+        max-width: 430px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 980px) {
+    .div-img-stagger {
+      height: 700px;
+      img {
+        max-width: 545px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .div-img-stagger {
+      max-width: 1060px;
+      margin-left: auto;
+      margin-right: auto;
+
+      img:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+
+      img:nth-child(2) {
+        left: 50%;
+        top: 22px;
+        @include translate(-50%, 0);
+      }
+
+      img:nth-child(3) {
+        top: 0;
+        right: 0;
+      }
+    }
+  }
 }
 
 
+/*****************************************/
+/* Moving Text Overlay (home page) *******/
+/*****************************************/
 
-/******************************
-/* Moving Text Overlay *******/
-/*****************************/
+.overlay-text{
+  color: $dark-purple;
 
+  @media only screen and (min-width: 1100px){
+    color: white;
+  }
+
+  @include breakpoint(s){
+    font-size: 1.1em;
+  }
+
+  @include breakpoint(m){
+    font-size: 1em;
+  }
+}
 
 
 .overlay-text-fixed{
@@ -492,6 +688,11 @@ $break-xl: 1600px;
   z-index: $zTextOverlay;
   left: 20px;
   top: 100px;
+
+  @include breakpoint(s){
+    top: 125px;
+    left: 40px;
+  }
 }
 
 
@@ -503,21 +704,59 @@ $break-xl: 1600px;
   background-color: $dark-purple;
   text-align: center;
 
+  a{
+    text-decoration: none;
+  }
   input{
     margin: 30px 0;
   }
 }
 
-#button-connect{
-  /*  height: 50px;
-    width: 200px;
-    border: solid white 3px;
-    font-size: 1.4em;
-    font-weight: 900;*/
+
+
+/*********************************************/
+/* Loading Spinner ***************************/
+/*********************************************/
+
+.loader-container-light, .loader-container-dark{
+  position: relative;
+  width: 100%;
+  height: 300px;
+
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: solid 1px $dark-purple;
+    opacity: 0;
+  }
+
+  span:nth-child(1){
+    animation: grow 2s infinite;
+  }
+  span:nth-child(2){
+    animation: grow 2s infinite;
+    animation-delay: 1s;
+  }
 }
 
-/*#button-connect:hover{
-  border-color: $dark-purple;
-  color: $dark-purple;
-  background-color: white;
-}*/
+.loader-container-light span{
+  border: solid 1px white;
+}
+
+@keyframes grow{
+  from{
+    width: 2px;
+    height: 2px;
+    opacity: 1;
+  }
+  to {
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+  }
+}

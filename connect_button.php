@@ -1,4 +1,4 @@
-<div class="div-contact-footer background-dark">
+<div class="div-contact-footer background-dark hide-on-load">
     <a href="contact.php">
         <input type="button" value="CONNECT" id="button-connect">
     </a>

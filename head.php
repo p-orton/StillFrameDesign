@@ -7,9 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Hind:300,400,500,600,700" rel="stylesheet">
-
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -44,9 +42,9 @@
 
 <!-- site Navigation -->
     <a href="index.php" class="a-index">
-        <div class="div-logo can-change-color">
+        <div class="div-logo can-change-color hide-on-load">
             <!-- fall back logo if javascript is disabled -->
-            <img src="img/fallback_logo.png" class="img-logo" id="img-logo-fallback"/>
+            <img src="img/fallback_logo.png" class="img-logo hide-on-load" id="img-logo-fallback"/>
 
             <!-- white or purple logo displayed based on the content it sits on top of -->
             <img src="img/logo_purple.png" class="img-logo hidden" id="img-logo-purple"/>
@@ -55,10 +53,12 @@
     </a>
 
     <a href="contact.php" class="a-contact">
-        <div class="div-contact-button font-dark">
-            <span class="line line01"></span>
-            <span class="line line02"></span>
-            <span class="line line03"></span>
+        <div class="div-contact-button font-dark hide-on-load contact-button-dark">
+            <img src="img/triangle_purple.png" class="img-triangle hidden" id="img-triangle-purple"/>
+            <img src="img/triangle_white.png" class="img-triangle" id="img-triangle-white"/>
+            <span class="line line01 hidden"></span>
+            <span class="line line02 hidden"></span>
+            <span class="line line03 hidden"></span>
             <span class="text">contact</span>
         </div>
     </a>
